@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".MenuLecciones" />
         <activity android:name=".MenuPracticas" />
-        <activity android:name=".LeccionAbecedario"></activity>
+        <activity android:name=".LeccionAbecedario" />
+        <activity android:name=".Consultas"></activity>
     </application>
 
 </manifest>

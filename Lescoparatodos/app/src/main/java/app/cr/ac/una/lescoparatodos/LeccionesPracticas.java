@@ -1,6 +1,6 @@
 package app.cr.ac.una.lescoparatodos;
 
-public class LeccionesPracticas {
+public class LeccionesPracticas{
     public int icon;
     public String title;
 

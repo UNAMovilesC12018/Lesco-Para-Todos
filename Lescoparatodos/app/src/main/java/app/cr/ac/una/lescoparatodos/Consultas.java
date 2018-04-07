@@ -7,21 +7,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class LeccionAbecedario extends AppCompatActivity {
+public class Consultas extends AppCompatActivity {
     Intent intento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_leccion_abecedario);
+        setContentView(R.layout.activity_consultas);
         // A continuación mi código para OnCreate
 
 
-
-    } // Fin del Oncreate de la Actividad LeccionAbecedario
+    } // Fin del Oncreate de la Actividad consultas
 
     public void Mensaje(String msg){
-        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();};
+        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();}
 
 
     @Override
@@ -31,7 +30,7 @@ public class LeccionAbecedario extends AppCompatActivity {
         return true;
     }
 
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
         switch (id) {
             case R.id.item1: intento = new Intent(getApplicationContext(), MenuLecciones.class);
@@ -45,4 +44,4 @@ public class LeccionAbecedario extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-} // [07:20:46 a.m.] Fin de la Clase Actividad LeccionAbecedario
+} // [07:01:33 a.m.] Fin de la Clase Actividad consultas
