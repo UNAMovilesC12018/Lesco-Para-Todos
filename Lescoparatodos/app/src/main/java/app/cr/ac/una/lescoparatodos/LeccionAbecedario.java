@@ -31,7 +31,7 @@ public class LeccionAbecedario extends AppCompatActivity {
         imagen=findViewById(R.id.letra_a_mostrar);
 
 
-        StorageReference pathReference = storageRef.child("abecedario/a.jpg");
+/*        StorageReference pathReference = storageRef.child("abecedario/a.jpg");
 
         StorageReference gsReference = storage.getReferenceFromUrl("gs://lesco-para-todos-64d10.appspot.com/abecedario/a.jpg");
         Mensaje(pathReference.getMetadata().toString());
@@ -40,12 +40,14 @@ public class LeccionAbecedario extends AppCompatActivity {
                 .using(new FirebaseImageLoader())
 
                 .load(pathReference)
-                .into(imagen);
-
-
-        /*        Glide.with(this)
-                .load("https://firebasestorage.googleapis.com/v0/b/lesco-para-todos-64d10.appspot.com/o/abecedario%2Fa.jpg?alt=media&token=de84758d-15ba-4501-8240-eb15eb7e6962")
                 .into(imagen);*/
+
+
+                Glide.with(this)
+                .load("https://firebasestorage.googleapis.com/v0/b/lesco-para-todos-64d10.appspot.com/o/abecedario%2Fa.jpg?alt=media&token=de84758d-15ba-4501-8240-eb15eb7e6962")
+                .fitCenter()
+
+                .into(imagen);
 
     } // Fin del Oncreate de la Actividad LeccionAbecedario
 
