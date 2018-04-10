@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "986844533077",
+    "firebase_url": "https://lesco-para-todos-64d10.firebaseio.com",
+    "project_id": "lesco-para-todos-64d10",
+    "storage_bucket": "lesco-para-todos-64d10.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986844533077:android:51a4d688ab926cec",
+        "android_client_info": {
+          "package_name": "app.cr.ac.una.lescoparatodos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "986844533077-g1100f7sal8bdgpdc2k541bttlcq85jd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLqNtzGYHW9qCtffcRPa5a3mvMRrlicyE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

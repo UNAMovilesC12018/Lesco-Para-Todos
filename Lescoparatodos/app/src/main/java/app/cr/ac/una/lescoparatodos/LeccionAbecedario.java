@@ -5,23 +5,52 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 
 public class LeccionAbecedario extends AppCompatActivity {
     Intent intento;
+    ImageView imagen;
+
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    StorageReference storageRef=storage.getReference();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leccion_abecedario);
         // A continuación mi código para OnCreate
+        imagen=findViewById(R.id.letra_a_mostrar);
 
 
+        StorageReference pathReference = storageRef.child("abecedario/a.jpg");
+
+        StorageReference gsReference = storage.getReferenceFromUrl("gs://lesco-para-todos-64d10.appspot.com/abecedario/a.jpg");
+        Mensaje(pathReference.getMetadata().toString());
+
+        Glide.with(this)
+                .using(new FirebaseImageLoader())
+
+                .load(pathReference)
+                .into(imagen);
+
+
+        /*        Glide.with(this)
+                .load("https://firebasestorage.googleapis.com/v0/b/lesco-para-todos-64d10.appspot.com/o/abecedario%2Fa.jpg?alt=media&token=de84758d-15ba-4501-8240-eb15eb7e6962")
+                .into(imagen);*/
 
     } // Fin del Oncreate de la Actividad LeccionAbecedario
 
     public void Mensaje(String msg){
-        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();};
+        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();};
 
 
     @Override

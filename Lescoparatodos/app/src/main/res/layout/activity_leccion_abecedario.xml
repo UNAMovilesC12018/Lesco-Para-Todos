@@ -6,4 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".LeccionAbecedario">
 
+    <ImageView
+        android:id="@+id/letra_a_mostrar"
+        android:layout_width="237dp"
+        android:layout_height="334dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="52dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/lesco" />
 </android.support.constraint.ConstraintLayout>
