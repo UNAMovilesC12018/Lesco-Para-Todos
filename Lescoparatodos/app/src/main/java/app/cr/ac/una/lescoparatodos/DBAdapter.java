@@ -1,16 +1,29 @@
 package app.cr.ac.una.lescoparatodos;
 
+import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.view.View;
 
 public class DBAdapter {
-    static final String KEY_ROWID = "_id integer primary key autoincrement, ";
-    static final String KEY_NOMBRE_IMAGEN = "NombreImagen text not null";    //Ambos son strings
-    static final String KEY_UBICACION_IMAGEN = "UbicacionImagen text not null";
+
+    final Context context;
+    DatabaseHelper DBHelper;
+    SQLiteDatabase db;
+
+    public DBAdapter(Context ctx) {
+        this.context = ctx;
+        DBHelper = new DatabaseHelper(context);
+    }
+
+    static final String KEY_ROWID = "_id";
+    static final String KEY_NOMBRE_IMAGEN = "NombreImagen";    //Ambos son strings
+    static final String KEY_UBICACION_IMAGEN = "UbicacionImagen";
     static final String TAG = "DBAdapter";
 
     public String getDatabaseName() {
@@ -28,21 +41,14 @@ public class DBAdapter {
     // Tenemos dos instrucciones para crear la BD, la "vieja" es la versión anterior de la BD, y "nueva"
 // para la actual. Originalmente creamos la BD con la "vieja" y dejamos "nueva" para modificaciones.
     static final String DATABASE_CREATE_vieja =
-            "create table " + DATABASE_TABLE + "(" + KEY_ROWID
-                    + KEY_NOMBRE_IMAGEN + ", " + KEY_UBICACION_IMAGEN + ");";
+            "create table "+DATABASE_TABLE+" ("+KEY_ROWID +" integer primary key autoincrement, "
+                    +  KEY_NOMBRE_IMAGEN +" text not null, "+KEY_UBICACION_IMAGEN +" text not null);";
 
     static final String DATABASE_CREATE_nueva =
-            "create table " +DATABASE_TABLE + "(" + KEY_ROWID
-                    + KEY_NOMBRE_IMAGEN + "," + KEY_UBICACION_IMAGEN + ");";
+            "create table "+DATABASE_TABLE+" ("+KEY_ROWID +" integer primary key autoincrement, "
+                    +  KEY_NOMBRE_IMAGEN +" text not null, "+KEY_UBICACION_IMAGEN +" text not null);";
 
-    final Context context;
-    DatabaseHelper DBHelper;
-    SQLiteDatabase db;
 
-    public DBAdapter(Context ctx) {
-        this.context = ctx;
-        DBHelper = new DatabaseHelper(context);
-    }
 
     // creamos subclase DatabaseHelper
     private static class DatabaseHelper extends SQLiteOpenHelper {
@@ -106,7 +112,7 @@ public class DBAdapter {
     }
 
     // Otra version de Insertar pero usando SQL
-    void insertDatoSQL(String atributo01, String atributo02) {
+    public void insertDatoSQL(String atributo01, String atributo02) {
         String orden = "INSERT INTO " + DATABASE_TABLE + " (" + KEY_NOMBRE_IMAGEN + "," + KEY_UBICACION_IMAGEN
                 + ") VALUES ('" + atributo01 + "'," + atributo02 + ")";
         try {
@@ -182,7 +188,7 @@ public class DBAdapter {
 
     }
 
-    //---recuperamos un dato particular---
+    //---recuperamos un registro particular---
     public String ObtenerRegistro(long rowId) {
         String msj = "No encontré el registro " + rowId;
         Cursor mCursor =
@@ -200,9 +206,42 @@ public class DBAdapter {
     }
 
 
-    public int NumeroRegistrosTabla() {
+    //---recuperamos un nombre en particular---
+
+    public String ObtenerNombre(long rowId) {
+        String nombre="";
+        Cursor mCursor =
+                db.query(true, DATABASE_TABLE, new String[]{KEY_ROWID,
+                                KEY_NOMBRE_IMAGEN}, KEY_ROWID + "=" + rowId, null,
+                        null, null, null, null);
+        if (mCursor.moveToFirst()) {
+
+             nombre = mCursor.getString(1);
+
+        }
+        return nombre;
+    }
+
+    //---recuperamos una direccion en particular---
+
+    public String ObtenerDireccion(long rowId) {
+        String direccion="";
+        Cursor mCursor =
+                db.query(true, DATABASE_TABLE, new String[]{KEY_ROWID,
+                                KEY_UBICACION_IMAGEN}, KEY_ROWID + "=" + rowId, null,
+                        null, null, null, null);
+        if (mCursor.moveToFirst()) {
+
+            direccion = mCursor.getString(1);
+
+        }
+        return direccion;
+    }
+
+    public int NumeroRegistrosTabla(){
+
         String countQuery = "SELECT  * FROM " + DATABASE_TABLE;
-        // SQLiteDatabase db = this.getReadableDatabase();
+        /*SQLiteDatabase db = this.getReadableDatabase();*/
         Cursor cursor = db.rawQuery(countQuery, null);
         int cnt = cursor.getCount();
         cursor.close();
@@ -210,7 +249,7 @@ public class DBAdapter {
     }
 
     void BorrarTabla() {
-        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " +DATABASE_TABLE);
         db.execSQL(DATABASE_CREATE_nueva);
     }
 
@@ -242,7 +281,5 @@ public class DBAdapter {
 
     }
 
-}
 
-
-// FIN DE LA CLASE DatabaseHelper
+}// FIN DE LA CLASE DatabaseHelper
