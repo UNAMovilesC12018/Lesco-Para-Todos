@@ -22,7 +22,7 @@ public class MenuLecciones extends AppCompatActivity {
 
         LeccionesPracticas leccionesPracticas_datos[] = new LeccionesPracticas[]{
                 new LeccionesPracticas(R.drawable.ai, "Aprender abecedario"),
-                new LeccionesPracticas(R.drawable.h, "Aprender saludos"),
+                new LeccionesPracticas(R.drawable.calen, "Aprender los días y los meses"),
                 new LeccionesPracticas(R.drawable.v, "Aprender verbos básicos"),
                 new LeccionesPracticas(R.drawable.ni, "Aprender números"),
         };
@@ -37,9 +37,21 @@ public class MenuLecciones extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position==1){
-                    Intent intento = new Intent(getApplicationContext(), LeccionAbecedario.class);
+                     intento = new Intent(getApplicationContext(), Lecciones.class);
+                    intento.putExtra("seleccion", 1);
                     startActivity(intento);
                 }
+                if(position==2){
+                     intento = new Intent(getApplicationContext(), Lecciones.class);
+                    intento.putExtra("seleccion",2 );
+                    startActivity(intento);
+                }
+                if(position==3){
+                     intento = new Intent(getApplicationContext(), Lecciones.class);
+                     intento.putExtra("seleccion",3 );
+                     startActivity(intento);
+                }
+
             }
         });
 
@@ -48,6 +60,11 @@ public class MenuLecciones extends AppCompatActivity {
     public void Mensaje(String msg){
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();};
 
+    @Override
+    public void onBackPressed() {
+        intento = new Intent(getApplicationContext(), MenuPrincipal.class);
+        startActivity(intento);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

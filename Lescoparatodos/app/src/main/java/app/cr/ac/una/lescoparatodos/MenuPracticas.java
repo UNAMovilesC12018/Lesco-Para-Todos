@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,10 +24,11 @@ public class MenuPracticas extends AppCompatActivity {
         setContentView(R.layout.activity_menu_practicas);
         // A continuación mi código para OnCreate
 
+
         LeccionesPracticas leccionesPracticas_datos[] = new LeccionesPracticas[]{
                 new LeccionesPracticas(R.drawable.ap, "Prácticar el abecedario"),
-                new LeccionesPracticas(R.drawable.sp, "Prácticar saludos"),
-                new LeccionesPracticas(R.drawable.vp, "Prácticar verbos "),
+                new LeccionesPracticas(R.drawable.ds, "Prácticar los dias y los meses"),
+                new LeccionesPracticas(R.drawable.vp, "Prácticar verbos"),
                 new LeccionesPracticas(R.drawable.np, "Práctica de números"),
         };
         LeccionesPracticasAdapter adapter=new LeccionesPracticasAdapter(this,R.layout.list_item_row,leccionesPracticas_datos);
@@ -47,6 +49,12 @@ public class MenuPracticas extends AppCompatActivity {
 
 
     } // Fin del Oncreate de la Actividad menuPracticas
+
+    @Override
+    public void onBackPressed() {
+        intento = new Intent(getApplicationContext(), MenuPrincipal.class);
+        startActivity(intento);
+    }
 
     public void Mensaje(String msg){
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();};
