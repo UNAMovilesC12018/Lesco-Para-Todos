@@ -23,7 +23,10 @@
         <activity android:name=".MenuLecciones" />
         <activity android:name=".MenuPracticas" />
         <activity android:name=".Consultas" />
-        <activity android:name=".Lecciones"></activity>
+        <activity android:name=".Lecciones" />
+        <activity android:name=".MenuAcercaDe" />
+        <activity android:name=".UbicacionesEscuelas"></activity>
+        <activity android:name=".InfoEstudiantes"></activity>
     </application>
 
 </manifest>

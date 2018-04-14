@@ -6,9 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".UbicacionesEscuelas">
 
-    <LinearLayout
-        android:id="@+id/layoutLinearVertical"
+    <TableLayout
+        android:id="@+id/layoutTablaUbicaciones"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"></LinearLayout>
+        android:layout_height="match_parent">
+
+    </TableLayout>
 </android.support.constraint.ConstraintLayout>
