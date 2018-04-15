@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="Menú de lecciones"
         android:id="@+id/item1"
@@ -8,4 +10,6 @@
         android:id="@+id/item2" />
     <item android:title="Consultas"
         android:id="@+id/item3" />
+    <item android:title="Guardar progreso"
+        android:id="@+id/item4" />
 </menu>
