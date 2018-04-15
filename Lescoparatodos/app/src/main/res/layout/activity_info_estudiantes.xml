@@ -9,9 +9,9 @@
     <TextView
         android:id="@+id/textView6"
         android:layout_width="383dp"
-        android:layout_height="49dp"
+        android:layout_height="70dp"
         android:layout_marginTop="208dp"
-        android:text="Estudiante"
+        android:text="Juan de Jesús Mora Serrano 115340654"
         android:textColor="@android:color/black"
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"

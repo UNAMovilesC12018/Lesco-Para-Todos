@@ -25,8 +25,9 @@
         <activity android:name=".Consultas" />
         <activity android:name=".Lecciones" />
         <activity android:name=".MenuAcercaDe" />
-        <activity android:name=".UbicacionesEscuelas"></activity>
-        <activity android:name=".InfoEstudiantes"></activity>
+        <activity android:name=".UbicacionesEscuelas" />
+        <activity android:name=".InfoEstudiantes" />
+        <activity android:name=".LeccionNumeros"></activity>
     </application>
 
 </manifest>

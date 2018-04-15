@@ -51,6 +51,10 @@ public class MenuLecciones extends AppCompatActivity {
                      intento.putExtra("seleccion",3 );
                      startActivity(intento);
                 }
+                if(position==4){
+                    intento = new Intent(getApplicationContext(), LeccionNumeros.class);
+                    startActivity(intento);
+                }
 
             }
         });
