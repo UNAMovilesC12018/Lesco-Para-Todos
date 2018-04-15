@@ -1,6 +1,8 @@
 package app.cr.ac.una.lescoparatodos;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,6 +11,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class MenuLecciones extends AppCompatActivity {
     ListView list;
@@ -37,19 +45,15 @@ public class MenuLecciones extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position==1){
-                     intento = new Intent(getApplicationContext(), Lecciones.class);
-                    intento.putExtra("seleccion", 1);
-                    startActivity(intento);
-                }
+                    verificaAvanceSalvado_y_mensajeDeConfirmacion("ProgresoAbecedario.txt",1);
+                    }
                 if(position==2){
-                     intento = new Intent(getApplicationContext(), Lecciones.class);
-                    intento.putExtra("seleccion",2 );
-                    startActivity(intento);
+                    verificaAvanceSalvado_y_mensajeDeConfirmacion("ProgresoDiasMeses.txt",2);
+
                 }
                 if(position==3){
-                     intento = new Intent(getApplicationContext(), Lecciones.class);
-                     intento.putExtra("seleccion",3 );
-                     startActivity(intento);
+                    verificaAvanceSalvado_y_mensajeDeConfirmacion("ProgresoVerbos.txt",3);
+
                 }
                 if(position==4){
                     intento = new Intent(getApplicationContext(), LeccionNumeros.class);
@@ -89,6 +93,69 @@ public class MenuLecciones extends AppCompatActivity {
             default:  Mensaje("No clasificado"); break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+
+    public void verificaAvanceSalvado_y_mensajeDeConfirmacion(String nombreArchivo,int seleccion){
+        boolean vacio=false;
+        boolean existe=true;
+
+        final int Tam_bloque_lectura = 100;
+        try
+        {
+            FileInputStream fIn = openFileInput(nombreArchivo);
+            InputStreamReader isr = new InputStreamReader(fIn);
+            char[] inputBuffer = new char[Tam_bloque_lectura];
+            String s = "";
+            int charRead;
+            while ((charRead = isr.read(inputBuffer))>0)
+            {
+                //---convert the chars to a String---
+                String readString =
+                        String.copyValueOf(inputBuffer, 0,
+                                charRead);
+                s += readString;
+                inputBuffer = new char[Tam_bloque_lectura];
+            }
+            isr.close();
+            if(s==""){
+                vacio=true;
+            }
+        }
+        catch (IOException ioe) {
+             existe=false;
+            ioe.printStackTrace();
+        }
+
+        if(!vacio && existe){
+            intento = new Intent(getApplicationContext(), Lecciones.class);
+            intento.putExtra("seleccion", seleccion);
+
+
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(MenuLecciones.this);
+            builder1.setMessage("Hay un avance de lección salvado, ¿Desea recuperarlo?");
+            builder1.setCancelable(true);
+            builder1.setPositiveButton("Sí",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            intento.putExtra("recuperarAvanceLeccion", true);
+                            startActivity(intento);
+                        } });
+            builder1.setNegativeButton("No",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            intento.putExtra("recuperarAvanceLeccion", false);
+                            startActivity(intento);
+                        } });
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+        }
+        else {
+            intento = new Intent(getApplicationContext(), Lecciones.class);
+            intento.putExtra("seleccion", seleccion);
+            startActivity(intento);
+        }
     }
 
 } // [04:48:07 p.m.] Fin de la Clase Actividad menuLecciones

@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,8 +18,10 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.Arrays;
@@ -41,9 +44,12 @@ public class Lecciones extends AppCompatActivity {
             contadorDiasMeses,
             contadorVerbos,
             seleccion;
+
     int arregloAbecedario[];
     int arregloDiasMeses[];
     int arregloVerbos[];
+
+    boolean recuperarAvanceLeccion;
 
     final Handler handler = new Handler();
 
@@ -71,12 +77,10 @@ public class Lecciones extends AppCompatActivity {
         arregloVerbos = new int[19];
 
 
-        int numero_elementos = 0;
-        int aleatorio;
-        boolean encontrado;
 
         intentoLlegada = getIntent();
         seleccion = intentoLlegada.getIntExtra("seleccion", 0);
+        recuperarAvanceLeccion=intentoLlegada.getBooleanExtra("recuperarAvanceLeccion",false);
 
         switch (seleccion) {
             case LECCION_ABECEDARIO:
@@ -85,35 +89,15 @@ public class Lecciones extends AppCompatActivity {
                 tipo.setText("LETRA");
                 continuar.setBackgroundResource(R.drawable.botonderecha);
 
-                recuperaProgreso(LECCION_ABECEDARIO);
-               // numero_elementos = 0;
-                contador = contadorAbecedario;
-                llenoArreglo(LECCION_ABECEDARIO);
-/*
-                //Hasta que el numero de elementos no sea como el de la longitud del array no salimos
+                if(recuperarAvanceLeccion){
+                    recuperaProgreso(LECCION_ABECEDARIO);
+                    contador = contadorAbecedario;
+                }
+               else{
+                  llenoConAleatorios(arregloAbecedario,30,0,30);
+                }
 
-                    while (numero_elementos < 30) {
-
-                        aleatorio = generaNumeroAleatorio(0, 30);
-                        encontrado = false;
-
-                        //Buscamos si el numero existe
-
-                        for (int i = 0; i < arregloAbecedario.length && !encontrado; i++) {
-                            if (aleatorio == arregloAbecedario[i]) {
-                                encontrado = true;
-                            }
-                        }
-
-
-                        //Si no esta lo agregamos
-                        if (!encontrado) {
-                            arregloAbecedario[numero_elementos] = aleatorio;
-                            numero_elementos++;
-                        }
-                    }
-                }*/
-                nombre.setText('"' + vg.db.ObtenerNombre(arregloAbecedario[contador]) + '"');
+              nombre.setText('"' + vg.db.ObtenerNombre(arregloAbecedario[contador]) + '"');
                 Glide.with(Lecciones.this)
                         .load(vg.db.ObtenerDireccion(arregloAbecedario[contador]))
                         .fitCenter()
@@ -135,6 +119,7 @@ public class Lecciones extends AppCompatActivity {
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
+                                    limpiarArchivo(LECCION_ABECEDARIO);
                                     intentoIda = new Intent(getApplicationContext(), MenuLecciones.class);
                                     startActivity(intentoIda);
                                 }
@@ -162,41 +147,15 @@ public class Lecciones extends AppCompatActivity {
                 tituloSuperior.setBackgroundColor(Color.parseColor("#FF8000"));
                 continuar.setBackgroundResource(R.drawable.botonnaranja);
 
-                recuperaProgreso(LECCION_DIAS_MESES);
-                //numero_elementos = 0;
-                contador = contadorDiasMeses;
-                llenoArreglo(LECCION_DIAS_MESES);
-                /*
-                //Hasta que el numero de elementos no sea como el de la longitud del array no salimos
-                if (verificaVacio(LECCION_DIAS_MESES)) {
-                    while (numero_elementos < 19) {
-
-                        aleatorio = generaNumeroAleatorio(31, 49);
-                        encontrado = false;
-
-                        //Buscamos si el numero existe
-
-                        for (int i = 0; i < arregloDiasMeses.length && !encontrado; i++) {
-                            if (aleatorio == arregloDiasMeses[i]) {
-                                encontrado = true;
-                            }
-                        }
+                if(recuperarAvanceLeccion){
+                    recuperaProgreso(LECCION_DIAS_MESES);
+                    contador = contadorDiasMeses;
+                }
+                else{
+                    llenoConAleatorios(arregloDiasMeses,19,31,49);
+                }
 
 
-                        //Si no esta lo agregamos
-                        if (!encontrado) {
-                            arregloDiasMeses[numero_elementos] = aleatorio;
-                            numero_elementos++;
-                        }
-                    }
-
-
-                    if (arregloDiasMeses[contador] < 38) {
-                        tipo.setText("DÍA");
-                    } else {
-                        tipo.setText("MES");
-                    }
-                }*/
                 nombre.setText("'" + vg.db.ObtenerNombre(arregloDiasMeses[contador]) + "'");
                 Glide.with(Lecciones.this)
                         .load(vg.db.ObtenerDireccion(arregloDiasMeses[contador]))
@@ -219,6 +178,7 @@ public class Lecciones extends AppCompatActivity {
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
+                                    limpiarArchivo(LECCION_DIAS_MESES);
                                     intentoIda = new Intent(getApplicationContext(), MenuLecciones.class);
                                     startActivity(intentoIda);
                                 }
@@ -250,34 +210,15 @@ public class Lecciones extends AppCompatActivity {
             case LECCION_VERBOS:
                 tipo.setText("VERBO");
 
-                recuperaProgreso(LECCION_VERBOS);
-                //numero_elementos = 0;
-                contador = contadorVerbos;
-                llenoArreglo(LECCION_VERBOS);
-                /*
-                //Hasta que el numero de elementos no sea como el de la longitud del array no salimos
-                if (verificaVacio(LECCION_VERBOS)) {
-                    while (numero_elementos < 19) {
-
-                        aleatorio = generaNumeroAleatorio(50, 68);
-                        encontrado = false;
-
-                        //Buscamos si el numero existe
-
-                        for (int i = 0; i < arregloVerbos.length && !encontrado; i++) {
-                            if (aleatorio == arregloVerbos[i]) {
-                                encontrado = true;
-                            }
-                        }
+                if(recuperarAvanceLeccion){
+                    recuperaProgreso(LECCION_VERBOS);
+                    contador = contadorVerbos;
+                }
+                else{
+                    llenoConAleatorios(arregloVerbos,19,50,68);
+                }
 
 
-                        //Si no esta lo agregamos
-                        if (!encontrado) {
-                            arregloVerbos[numero_elementos] = aleatorio;
-                            numero_elementos++;
-                        }
-                    }
-                }*/
                 nombre.setText('"' + vg.db.ObtenerNombre(arregloVerbos[contador]) + '"');
 
                 Glide.with(Lecciones.this)
@@ -301,6 +242,7 @@ public class Lecciones extends AppCompatActivity {
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
+                                    limpiarArchivo(LECCION_VERBOS);
                                     intentoIda = new Intent(getApplicationContext(), MenuLecciones.class);
                                     startActivity(intentoIda);
                                 }
@@ -332,29 +274,13 @@ public class Lecciones extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
-    public void llenoArreglo(int leccion){
-        switch (leccion){
-            case LECCION_ABECEDARIO:
-                llenoConAleatorios(LECCION_ABECEDARIO, arregloAbecedario, 30, 0, 30);
-                break;
 
-            case LECCION_DIAS_MESES:
-                llenoConAleatorios(LECCION_DIAS_MESES, arregloDiasMeses, 19, 31, 49);
-                break;
 
-            case LECCION_VERBOS:
-                llenoConAleatorios(LECCION_VERBOS, arregloVerbos, 19, 50, 68);
-                break;
-        }
-
-    }
-
-    public void llenoConAleatorios(int leccion, int[] arreglo, int tamCiclo, int limInferior, int limSuperior) {
+    public void llenoConAleatorios(int[] arreglo, int tamCiclo, int limInferior, int limSuperior) {
         int numero_elementos = 0;
         int aleatorio;
         boolean encontrado;
 
-        if (verificaVacio(leccion)) {
             //Hasta que el numero de elementos no sea como el de la longitud del array no salimos
             while (numero_elementos < tamCiclo) {
 
@@ -363,7 +289,7 @@ public class Lecciones extends AppCompatActivity {
 
                 //Buscamos si el numero existe
 
-                for (int i = 0; i < arreglo.length && !encontrado && arreglo[i] != 0; i++) {
+                for (int i = 0; i < arreglo.length && !encontrado; i++) {
                     if (aleatorio == arreglo[i]) {
                         encontrado = true;
                     }
@@ -377,7 +303,7 @@ public class Lecciones extends AppCompatActivity {
                 }
             }
         }
-    }
+
 
     public static int generaNumeroAleatorio(int minimo, int maximo) {
 
@@ -443,17 +369,17 @@ public class Lecciones extends AppCompatActivity {
             switch (leccion) {
                 case LECCION_ABECEDARIO:
                     outputStreamWriter.write(Arrays.toString(this.arregloAbecedario) + "\n");
-                    outputStreamWriter.write(String.valueOf(this.contadorAbecedario) + "\n");
+                    outputStreamWriter.write(String.valueOf(this.contadorAbecedario-1) + "\n");
                     break;
 
                 case LECCION_DIAS_MESES:
                     outputStreamWriter.write(Arrays.toString(this.arregloDiasMeses) + "\n");
-                    outputStreamWriter.write(String.valueOf(this.contadorDiasMeses) + "\n");
+                    outputStreamWriter.write(String.valueOf(this.contadorDiasMeses-1) + "\n");
                     break;
 
                 case LECCION_VERBOS:
                     outputStreamWriter.write(Arrays.toString(this.arregloVerbos) + "\n");
-                    outputStreamWriter.write(String.valueOf(this.contadorVerbos));
+                    outputStreamWriter.write(String.valueOf(this.contadorVerbos-1));
                     break;
             }
 
@@ -472,6 +398,7 @@ public class Lecciones extends AppCompatActivity {
             FileInputStream fileInputStream = openFileInput(nombreArchivo);
             InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
             switch (leccion) {
                 case LECCION_ABECEDARIO:
                 this.arregloAbecedario = parseoString(bufferedReader.readLine());
@@ -492,7 +419,21 @@ public class Lecciones extends AppCompatActivity {
 
         } catch (Exception e) {
             System.out.println("Error al leer el archivo " + e.getMessage());
-            reiniciaProgreso(leccion);
+        }
+    }
+
+    public void limpiarArchivo(int leccion) {
+        String nombreArchivo = getNombreArchivo(leccion);
+        try {
+            FileOutputStream fOut =
+            openFileOutput(nombreArchivo, MODE_PRIVATE);
+
+            OutputStreamWriter osw = new OutputStreamWriter(fOut);
+            osw.close();
+
+        } catch (IOException ioe) {
+            Mensaje("Error al limpiar");
+            ioe.printStackTrace();
         }
     }
 
@@ -505,45 +446,8 @@ public class Lecciones extends AppCompatActivity {
         return result;
     }
 
-    public void reiniciaProgreso(int leccion) {
-        switch (leccion){
-            case LECCION_ABECEDARIO:
-                arregloAbecedario = new int[30];
-                contadorAbecedario = 0;
-                break;
 
-            case LECCION_DIAS_MESES:
-                arregloDiasMeses = new int[19];
-                contadorDiasMeses = 0;
-                break;
 
-            case LECCION_VERBOS:
-                arregloVerbos = new int[19];
-                contadorVerbos = 0;
-                break;
-        }
-        llenoArreglo(LECCION_ABECEDARIO);
-    }
-
-    public boolean verificaVacio(int leccion) {
-        switch (leccion) {
-            case LECCION_ABECEDARIO:
-                if (this.arregloAbecedario[0] == 0)
-                    return true;
-                return false;
-
-            case LECCION_DIAS_MESES:
-                if (this.arregloDiasMeses[0] == 0)
-                    return true;
-                return false;
-
-            case LECCION_VERBOS:
-                if (this.arregloVerbos[0] == 0)
-                    return true;
-                return false;
-        }
-        return true;
-    }
 
     public String getNombreArchivo(int leccion){
         switch (leccion){
@@ -560,6 +464,7 @@ public class Lecciones extends AppCompatActivity {
     }
 
     public void recuperaProgreso(int leccion) {
+
         leeArchivo(leccion);
     }
 
@@ -579,4 +484,4 @@ public class Lecciones extends AppCompatActivity {
     }
 
 
-} // [01:33:06 p.m.] Fin de la Clase Actividad LeccionVerbos
+} // [01:33:06 p.m.] Fin de la Clase Actividad Leccion
