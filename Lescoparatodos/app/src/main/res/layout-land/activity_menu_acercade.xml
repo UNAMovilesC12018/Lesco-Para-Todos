@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuAcercaDe">
+
+    <Button
+        android:id="@+id/buttonEscuelas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="56dp"
+        android:text="ESCUELAS"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonEstudiantes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="96dp"
+        android:text="ESTUDIANTES"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonEscuelas" />
+
+    <ImageView
+        android:id="@+id/imageViewEscuela"
+        android:layout_width="67dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="348dp"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/iconoescuela"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewLogoUna"
+        android:layout_width="79dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="348dp"
+        android:layout_marginTop="184dp"
+        android:src="@drawable/logouna"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>

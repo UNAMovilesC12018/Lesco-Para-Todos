@@ -30,10 +30,10 @@
     <ImageView
         android:id="@+id/imagen_a_mostrar"
         android:layout_width="237dp"
-        android:layout_height="171dp"
-        android:layout_marginTop="124dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="64dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout"
         app:srcCompat="@drawable/lesco" />
@@ -42,14 +42,13 @@
     <TextView
         android:id="@+id/tipo"
         android:layout_width="wrap_content"
-        android:layout_height="31dp"
-        android:layout_marginTop="76dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="serif"
         android:text="TIPO"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
@@ -57,34 +56,34 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="26dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="456dp"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="248dp"
         android:text="Continuar lección..."
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
     <ImageButton
         android:id="@+id/botonContinuar"
         android:layout_width="56dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="252dp"
-        android:layout_marginTop="444dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="45dp"
+        android:layout_marginEnd="196dp"
+        android:layout_marginTop="236dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/botonazul" />
 
     <TextView
         android:id="@+id/nombre"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="312dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="180dp"
         android:fontFamily="casual"
         android:text="Nombre"
         android:textSize="22sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/tipo" />
 
 </android.support.constraint.ConstraintLayout>
