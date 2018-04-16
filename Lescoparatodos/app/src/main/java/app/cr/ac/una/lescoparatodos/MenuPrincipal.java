@@ -76,8 +76,8 @@ public class MenuPrincipal extends AppCompatActivity {
                         break;
 
                     case R.id.button3:
-                        /*intento = new Intent(getApplicationContext(), Consultas.class);
-                        startActivity(intento);*/
+                        intento = new Intent(getApplicationContext(), Consultas.class);
+                        startActivity(intento);
                         break;
 
                     case R.id.buttonEstudiantes:

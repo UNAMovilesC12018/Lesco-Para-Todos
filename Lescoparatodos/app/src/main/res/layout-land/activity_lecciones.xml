@@ -86,4 +86,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tipo" />
 
+    <ImageView
+        android:id="@+id/btnGuardar"
+        android:layout_width="27dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/guardar" />
+
 </android.support.constraint.ConstraintLayout>
