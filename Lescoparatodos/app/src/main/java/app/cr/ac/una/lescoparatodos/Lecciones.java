@@ -33,6 +33,7 @@ public class Lecciones extends AppCompatActivity {
     ImageView imagen;
     TextView nombre;
     ImageButton continuar;
+    ImageView guardar;
 
     VariablesGlobales vg;
     Intent intentoLlegada;
@@ -69,6 +70,7 @@ public class Lecciones extends AppCompatActivity {
         nombre = findViewById(R.id.nombre);
         tipo = findViewById(R.id.tipo);
         continuar = findViewById(R.id.botonContinuar);
+       guardar=(ImageView) findViewById(R.id.btnGuardar);
 
         vg = VariablesGlobales.getInstance();
 
@@ -267,7 +269,24 @@ public class Lecciones extends AppCompatActivity {
         }
 
 
+        guardar.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+
+            public void onClick(View arg0) {
+
+                guardaProgreso(seleccion);
+
+
+            }
+
+        });
+
+
     } // Fin del Oncreate de la Actividad Lecciones
+
+
+
 
 
     public void Mensaje(String msg) {
@@ -334,12 +353,7 @@ public class Lecciones extends AppCompatActivity {
                 startActivity(intentoMenu);
                 break;
 
-            case R.id.item4:
-                guardaProgreso(seleccion);
-                break;
-
-
-            default:
+                default:
                 Mensaje("No clasificado");
                 break;
         }
