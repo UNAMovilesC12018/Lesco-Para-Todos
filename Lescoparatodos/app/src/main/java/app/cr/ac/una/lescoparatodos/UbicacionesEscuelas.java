@@ -39,7 +39,6 @@ public class UbicacionesEscuelas extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ubicaciones);
-        Log.i("Entro", "Entro");
         this.setTitle("Escuelas de lesco en el país");
         iconoUbicacion = getResources().getDrawable(R.drawable.location);
         iconoWeb = getResources().getDrawable(R.drawable.internet);
@@ -52,13 +51,14 @@ public class UbicacionesEscuelas extends AppCompatActivity {
         InputStream miarchivo = getResources().openRawResource(R.raw.escuelaslesco);
         listaEscuelas.clear();
         BufferedReader br = null;
-        String line;
+        String line, nombreTemporal;
         try {
             br = new BufferedReader(new InputStreamReader(miarchivo));
             while ((line = br.readLine()) != null) {
                 listaEscuelas.add(line);
+                nombreTemporal = new String(line);
                 line = br.readLine();
-                listaUbicaciones.add("geo:" + line);
+                listaUbicaciones.add("geo:0,0?q=" + line + "(" + Uri.encode(nombreTemporal) + ")");
                 line = br.readLine();
                 listaURL.add(line);
             }

@@ -1,9 +1,9 @@
-UNED Sabanilla 
-9.9409427,-84.0507146
+UNED Sabanilla
+9.9409427,-84.0485259
 https://www.uned.ac.cr/
 UCR San Pedro
-9.9373965,-84.0562309
+9.9369951,-84.0510292
 http://www.ucr.ac.cr/
 UNA Heredia
-9.9373946,-84.086873
+9.9986861,-84.1111858
 https://www.una.ac.cr/
