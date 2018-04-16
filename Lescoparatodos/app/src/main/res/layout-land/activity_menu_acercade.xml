@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="188dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="16dp"
         android:text="ESCUELAS"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,8 +20,8 @@
         android:id="@+id/buttonEstudiantes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="64dp"
         android:text="ESTUDIANTES"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonEscuelas" />
@@ -30,8 +30,7 @@
         android:id="@+id/imageViewEscuela"
         android:layout_width="67dp"
         android:layout_height="73dp"
-        android:layout_marginStart="348dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="372dp"
         android:src="@drawable/iconoescuela"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -40,9 +39,29 @@
         android:id="@+id/imageViewLogoUna"
         android:layout_width="79dp"
         android:layout_height="75dp"
-        android:layout_marginStart="348dp"
-        android:layout_marginTop="184dp"
+        android:layout_marginStart="340dp"
+        android:layout_marginTop="116dp"
         android:src="@drawable/logouna"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="98dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="244dp"
+        android:text="Enlace al video:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="124dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="312dp"
+        android:layout_marginTop="244dp"
+        android:text="ww..."
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

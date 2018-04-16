@@ -10,8 +10,8 @@
         android:id="@+id/buttonEscuelas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="64dp"
         android:text="ESCUELAS"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,10 +32,10 @@
         android:layout_height="73dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="56dp"
         android:src="@drawable/iconoescuela"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.37"
+        app:layout_constraintHorizontal_bias="0.455"
         app:layout_constraintStart_toEndOf="@+id/buttonEscuelas"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,8 +44,28 @@
         android:layout_width="74dp"
         android:layout_height="71dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="132dp"
+        android:layout_marginTop="116dp"
         android:src="@drawable/logouna"
         app:layout_constraintStart_toEndOf="@+id/buttonEstudiantes"
         app:layout_constraintTop_toBottomOf="@+id/imageViewEscuela" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="98dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="420dp"
+        android:text="Enlace al video:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="124dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="424dp"
+        android:text="ww..."
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
