@@ -61,11 +61,11 @@
 
     <TextView
         android:id="@+id/textView10"
-        android:layout_width="124dp"
+        android:layout_width="wrap_content"
         android:layout_height="20dp"
-        android:layout_marginStart="172dp"
-        android:layout_marginTop="424dp"
-        android:text="ww..."
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="420dp"
+        android:text="https://youtu.be/SYD2VOc1ks8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
