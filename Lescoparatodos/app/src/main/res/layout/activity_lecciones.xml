@@ -66,10 +66,10 @@
 
     <ImageButton
         android:id="@+id/botonContinuar"
-        android:layout_width="56dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="252dp"
-        android:layout_marginTop="444dp"
+        android:layout_width="52dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="244dp"
+        android:layout_marginTop="448dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/botonazul" />

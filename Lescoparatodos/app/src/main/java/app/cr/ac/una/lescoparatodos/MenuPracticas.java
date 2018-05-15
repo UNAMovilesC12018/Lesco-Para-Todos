@@ -1,6 +1,8 @@
 package app.cr.ac.una.lescoparatodos;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,9 +11,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class MenuPracticas extends AppCompatActivity {
     ListView list;
@@ -42,7 +49,18 @@ public class MenuPracticas extends AppCompatActivity {
            @Override
            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                if(position==1){
+                   verificaAvanceSalvado_y_mensajeDeConfirmacion("ProgresoAbecedarioPractica.txt",4);
+               }
+               if(position==2){
+                   verificaAvanceSalvado_y_mensajeDeConfirmacion("ProgresoDiasMesesPractica.txt",5);
 
+               }
+               if(position==3){
+                   verificaAvanceSalvado_y_mensajeDeConfirmacion("ProgresoVerbosPractica.txt",6);
+
+               }
+               if(position==4){
+                   verificaAvanceSalvado_y_mensajeDeConfirmacion("ProgresoNumerosPractica.txt",7);
                }
            }
        });
@@ -57,7 +75,7 @@ public class MenuPracticas extends AppCompatActivity {
     }
 
     public void Mensaje(String msg){
-        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();};
+        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();}
 
 
     @Override
@@ -79,6 +97,67 @@ public class MenuPracticas extends AppCompatActivity {
             default:  Mensaje("No clasificado"); break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public void verificaAvanceSalvado_y_mensajeDeConfirmacion(String nombreArchivo,int seleccion){
+        boolean vacio=false;
+        boolean existe=true;
+
+        final int Tam_bloque_lectura = 100;
+        try
+        {
+            FileInputStream fIn = openFileInput(nombreArchivo);
+            InputStreamReader isr = new InputStreamReader(fIn);
+            char[] inputBuffer = new char[Tam_bloque_lectura];
+            String s = "";
+            int charRead;
+            while ((charRead = isr.read(inputBuffer))>0)
+            {
+                //---convert the chars to a String---
+                String readString =
+                        String.copyValueOf(inputBuffer, 0,
+                                charRead);
+                s += readString;
+                inputBuffer = new char[Tam_bloque_lectura];
+            }
+            isr.close();
+            if(s==""){
+                vacio=true;
+            }
+        }
+        catch (IOException ioe) {
+            existe=false;
+            ioe.printStackTrace();
+        }
+
+        if(!vacio && existe){
+            intento = new Intent(getApplicationContext(), Practicas.class);
+            intento.putExtra("seleccion", seleccion);
+
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(MenuPracticas.this);
+            builder1.setMessage("Hay un avance de ésta práctica salvado, ¿Desea recuperarlo?");
+            builder1.setCancelable(true);
+            builder1.setPositiveButton("Sí",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            intento.putExtra("recuperarAvancePractica", true);
+                            startActivity(intento);
+                        } });
+            builder1.setNegativeButton("No",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            intento.putExtra("recuperarAvancePractica", false);
+                            startActivity(intento);
+                        } });
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+        }
+        else {
+            intento = new Intent(getApplicationContext(), Practicas.class);
+            intento.putExtra("seleccion", seleccion);
+            startActivity(intento);
+        }
     }
 
 

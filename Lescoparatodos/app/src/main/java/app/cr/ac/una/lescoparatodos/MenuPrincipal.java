@@ -47,7 +47,10 @@ public class MenuPrincipal extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
-    ;
+    @Override
+    public void onBackPressed() {
+
+    }
 
     public void OnclickDelButton(int ref) {
 

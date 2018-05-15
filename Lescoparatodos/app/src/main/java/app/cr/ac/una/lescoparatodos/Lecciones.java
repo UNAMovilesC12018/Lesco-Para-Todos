@@ -96,8 +96,11 @@ public class Lecciones extends AppCompatActivity {
                     contador = contadorAbecedario;
                 }
                else{
-                  llenoConAleatorios(arregloAbecedario,30,0,30);
+                    contador=0;
+                  llenoConAleatorios(arregloAbecedario,30,1,30);
+
                 }
+
 
               nombre.setText('"' + vg.db.ObtenerNombre(arregloAbecedario[contador]) + '"');
                 Glide.with(Lecciones.this)
@@ -135,7 +138,7 @@ public class Lecciones extends AppCompatActivity {
                                     .fitCenter()
                                     .into(imagen);
                             contador++;
-                            contadorAbecedario = contador;
+
                         }
 
                     }
@@ -200,7 +203,7 @@ public class Lecciones extends AppCompatActivity {
                                     .fitCenter()
                                     .into(imagen);
                             contador++;
-                            contadorDiasMeses = contador;
+
                         }
 
                     }
@@ -259,7 +262,7 @@ public class Lecciones extends AppCompatActivity {
                                     .fitCenter()
                                     .into(imagen);
                             contador++;
-                            contadorVerbos = contador;
+
                         }
 
                     }
@@ -383,17 +386,17 @@ public class Lecciones extends AppCompatActivity {
             switch (leccion) {
                 case LECCION_ABECEDARIO:
                     outputStreamWriter.write(Arrays.toString(this.arregloAbecedario) + "\n");
-                    outputStreamWriter.write(String.valueOf(this.contadorAbecedario-1) + "\n");
+                    outputStreamWriter.write(String.valueOf(this.contador-1) + "\n");
                     break;
 
                 case LECCION_DIAS_MESES:
                     outputStreamWriter.write(Arrays.toString(this.arregloDiasMeses) + "\n");
-                    outputStreamWriter.write(String.valueOf(this.contadorDiasMeses-1) + "\n");
+                    outputStreamWriter.write(String.valueOf(this.contador-1) + "\n");
                     break;
 
                 case LECCION_VERBOS:
                     outputStreamWriter.write(Arrays.toString(this.arregloVerbos) + "\n");
-                    outputStreamWriter.write(String.valueOf(this.contadorVerbos-1));
+                    outputStreamWriter.write(String.valueOf(this.contador-1));
                     break;
             }
 

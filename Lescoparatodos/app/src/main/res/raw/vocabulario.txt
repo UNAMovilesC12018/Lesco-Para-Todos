@@ -66,3 +66,13 @@ Responder,https://firebasestorage.googleapis.com/v0/b/lesco-para-todos-64d10.app
 Saber,https://firebasestorage.googleapis.com/v0/b/lesco-para-todos-64d10.appspot.com/o/verbos%2FSaber.gif?alt=media&token=d59ea442-a048-4e95-8414-875e998de3b7
 Ser,https://firebasestorage.googleapis.com/v0/b/lesco-para-todos-64d10.appspot.com/o/verbos%2FSer.gif?alt=media&token=5f9c17db-a179-4dbe-b4bf-f812ae080ca0
 Soñar,https://firebasestorage.googleapis.com/v0/b/lesco-para-todos-64d10.appspot.com/o/verbos%2FSo%C3%B1ar.gif?alt=media&token=a2fbd36a-3fdb-4aeb-a3a5-6a8aef01c292
+1,https://firebasestorage.googleapis.com/v0/b/lesco-para-todos-64d10.appspot.com/o/numeros%2F1.PNG?alt=media&token=5498e91b-fff4-4be9-911d-9cf1a379134b
+2,https://firebasestorage.googleapis.com/v0/b/lesco-para-todos-64d10.appspot.com/o/numeros%2F2.PNG?alt=media&token=362842f7-a6d6-4c49-aa87-026a153f1c0d
+3,https://firebasestorage.googleapis.com/v0/b/lesco-para-todos-64d10.appspot.com/o/numeros%2F3.PNG?alt=media&token=f33514be-0724-45cf-9093-1be126324582
+4,https://firebasestorage.googleapis.com/v0/b/lesco-para-todos-64d10.appspot.com/o/numeros%2F4.PNG?alt=media&token=d09de27a-1b06-4abd-adf9-95dc0d93b26d
+5,https://firebasestorage.googleapis.com/v0/b/lesco-para-todos-64d10.appspot.com/o/numeros%2F5.PNG?alt=media&token=eeb09f39-353f-4164-8792-1f0db968ebf0
+6,https://firebasestorage.googleapis.com/v0/b/lesco-para-todos-64d10.appspot.com/o/numeros%2F6.PNG?alt=media&token=96cfa455-8a33-4aec-83e1-746fe3f28415
+7,https://firebasestorage.googleapis.com/v0/b/lesco-para-todos-64d10.appspot.com/o/numeros%2F7.PNG?alt=media&token=3dfbf9b6-e51b-430d-8c72-d764ac2703e4
+8,https://firebasestorage.googleapis.com/v0/b/lesco-para-todos-64d10.appspot.com/o/numeros%2F8.PNG?alt=media&token=4d0a733b-0228-421a-9c91-2e8769a00a8f
+9,https://firebasestorage.googleapis.com/v0/b/lesco-para-todos-64d10.appspot.com/o/numeros%2F9.PNG?alt=media&token=89f80d10-cdb5-4390-9f0a-e4916eff553d
+10,https://firebasestorage.googleapis.com/v0/b/lesco-para-todos-64d10.appspot.com/o/numeros%2F10.PNG?alt=media&token=dfbfd016-ff6c-45d6-9e01-f6125fefd8f6
