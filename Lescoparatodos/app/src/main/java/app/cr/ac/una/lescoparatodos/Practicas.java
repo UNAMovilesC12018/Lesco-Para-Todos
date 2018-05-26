@@ -273,9 +273,10 @@ public class Practicas extends AppCompatActivity {
                 }
 
 
-                pregunta.setText("Seña del número '" + vg.db.ObtenerNombre(arregloVerbos[contador]) + "'");
+                pregunta.setText("Seña del verbo '" + vg.db.ObtenerNombre(arregloVerbos[contador]) + "'");
 
-                preparaMatrix(arregloNumeros, 50, 68);
+                preparaMatrix(arregloVerbos, 50, 68);
+
 
                 numeroPregunta = contador + 1;
                 preguntas.setText("Pregunta:  " + numeroPregunta + "/19");
@@ -323,7 +324,7 @@ public class Practicas extends AppCompatActivity {
                                 opcion4.setEnabled(true);
 
 
-                                pregunta.setText("Seña del número '" + vg.db.ObtenerNombre(arregloVerbos[contador]) + "'");
+                                pregunta.setText("Seña del verbo '" + vg.db.ObtenerNombre(arregloVerbos[contador]) + "'");
 
                                 preparaMatrix(arregloVerbos, 50, 68);
 

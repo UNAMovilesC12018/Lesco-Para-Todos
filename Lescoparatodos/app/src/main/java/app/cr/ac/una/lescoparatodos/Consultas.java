@@ -22,7 +22,6 @@ import java.util.List;
 
 public class Consultas extends AppCompatActivity {
     private Intent intento;
-    private String[] elementosSpinner = {"Abecedario", "Días y meses", "Verbos básicos"};
     private VariablesGlobales variablesGlobales = VariablesGlobales.getInstance();
     private List<String> todosLosElementos = new ArrayList<>();
     private ImageView imagen;
